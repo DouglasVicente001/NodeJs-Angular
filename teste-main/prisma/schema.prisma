@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id            Int       @id @default(autoincrement())
+  nome          String    
+  cep           String     
+  email         String     @unique
+  atendimento Atendimento[]
+
+  @@map("cliente")
+}
+
+model Atendimento {
+  id        Int      @id @default(autoincrement())
+  dataVenda DateTime @default(now()) 
+  dataTroca DateTime @updatedAt
+  cliente Cliente @relation(fields: [clienteId], references: [id])
+  clienteId Int
+  produtos AtendimentoProduto[] @relation("atendimento")
+  
+
+  @@map("atendimento")
+}
+
+model AtendimentoProduto {
+  atendimento    Atendimento  @relation("atendimento", fields: [atendimentoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  atendimentoId  Int
+  produto   Produto @relation("produto", fields: [ProdutoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  ProdutoId Int
+  criacao_em DateTime @default(now())
+  modificado_em DateTime  @updatedAt
+  @@id([atendimentoId, ProdutoId])
+  @@map("atendimento_produto")
+}
+
+model Produto {
+  id            Int       @id @default(autoincrement())
+  nome       String
+  marca      String
+  preco      Float
+  Vendas AtendimentoProduto[] @relation("produto")
+
+  @@map("produto")
+}
+
+model Usuario {
+  id    String     @id @default(uuid())
+  email String     @unique
+  senha String
+  criado_em DateTime @default(now())
+  modificado_em DateTime @updatedAt
+
+  @@map("usuarios")
+}
