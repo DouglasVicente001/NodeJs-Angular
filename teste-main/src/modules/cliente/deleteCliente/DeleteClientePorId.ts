@@ -4,22 +4,23 @@ import { AppError } from "../../errors/AppError";
 
 export class DeleteClientePorId {
     async execute(req: Request, res: Response) {
-        const clienteNoExiste = await prisma.cliente.findUnique({
+        const palavraNaoExiste = await prisma.cliente.findUnique({
             where: {
-               id: Number(req.body.id)
+                //@ts-ignore
+                id: req.query.id = parseInt(req.query.id)
             }
-        });
-        if (!clienteNoExiste) {
-            throw new AppError(`Cliente com o ID '${req.query.id}' não existe.`, 404)
+        })
+        if (!palavraNaoExiste) {
+            throw new AppError(`A palavra com ID '${req.query.id}' não existe.`, 404)
         }
 
-        const cliente = await prisma.cliente.delete({
+        const palavra = await prisma.cliente.delete({
             where: {
-                
-                id: Number(req.body.id)
-            }
+                //@ts-ignore
+                id: Number(req.query.id)
+            },  
         });
-        const result = (`Cliente '${cliente.nome}' com ID '${req.query.id}' foi excluida com sucesso`)
+        const result = (`Palavra '${palavra.nome}' com ID '${req.query.id}' foi excluida com sucesso`)
 
         return result
     }

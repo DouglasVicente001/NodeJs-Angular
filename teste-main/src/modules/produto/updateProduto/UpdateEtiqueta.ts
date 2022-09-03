@@ -7,7 +7,7 @@
 //         const etiquetaNaoExiste = await prisma.etiqueta.findUnique({
 //             where: {
 //                 //@ts-ignore
-//                 id: req.query.id = parseInt(req.query.id)
+//                 id: Number(id)
 //             }
 //         })
 //         if (!etiquetaNaoExiste) {

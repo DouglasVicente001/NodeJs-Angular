@@ -9,14 +9,29 @@ export class GetTodosAtendimentos {
             orderBy: {
                 clienteId: "asc"
             },
+            
             include: {
-               produtos: {
-                select: {
-                    
-                    produto: true,
+               cliente: {
+                select:{
+                    nome: true,
+                    email: true,
+                    cep: true
+            },
+        },
+        produtos: {
+            select: {
+                produto: {
+                    select: {
+                        nome: true,
+                        marca: true,
+                        preco: true,
+                    }
                 }
             }
-        }})
+        }
+    }
+
+})
         if (atendimento.length == 0) {
             throw new AppError('Nenhuma palavra cadastrada', 404)
         }
