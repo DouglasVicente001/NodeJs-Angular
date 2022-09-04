@@ -33,7 +33,7 @@ export class GetTodosAtendimentos {
 
 })
         if (atendimento.length == 0) {
-            throw new AppError('Nenhuma palavra cadastrada', 404)
+            throw new AppError('Nenhum atendimento cadastrado', 404)
         }
 
         return atendimento;

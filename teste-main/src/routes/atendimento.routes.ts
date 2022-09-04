@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { GetTodosAtendimentosController } from "../modules/atendimento/getAtendimentos/GetAllPalavrasController";
+import { GetAtendimentosPorIdController } from "../modules/atendimento/getAtendimentos/GetAtendimentosPorIdController";
+import { GetTodosAtendimentosController } from "../modules/atendimento/getAtendimentos/GetTodosAtendimentosController";
 
 
 import { PostAtendimentoController } from "../modules/atendimento/postAtendimento/PostAtendimentoController";
@@ -16,12 +17,13 @@ const postAtendimentoController = new PostAtendimentoController();
 // const deletePalavrasPorIdController = new DeletePalavrasPorIdController();
 // const updatePalavraController = new UpdatePalavraController();
 const getTodosAtendimentosController = new GetTodosAtendimentosController();
+const getAtendimentosPorIdController = new GetAtendimentosPorIdController();
 
 
 const atendimentoRoutes = Router();
 
 atendimentoRoutes.get('/', getTodosAtendimentosController.handle);
-// palavrasRoutes.get('/nome', getPalavrasPorNomeController.handle);
+atendimentoRoutes.get('/id', getAtendimentosPorIdController.handle);
 
 atendimentoRoutes.use(auth);
 
