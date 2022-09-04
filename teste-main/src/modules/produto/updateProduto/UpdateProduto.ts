@@ -15,16 +15,18 @@ export class UpdateProduto {
             throw new AppError(`A produto com ID '${req.query.id}' não existe.`, 404)
         }
     
-        const produtoJaExiste = await prisma.produto.findFirst({
+        const produtoJaExiste = await prisma.produto.findUnique({
             where:{
-                id: Number(req.body.id),
+                id: Number(req.query.id), 
                 //possível erro
             }
         })
 
-        if(produtoJaExiste){
-            throw new AppError(`O produto ${req.body.produto} já esta cadastrada.`, 409)
-        }
+
+        //CausandoERRO
+        // if(produtoJaExiste){
+        //     throw new AppError(`O produto ${req.body.produto} já esta cadastrada.`, 409)
+        // }
 
         const produto = await prisma.produto.update({
             data: {
