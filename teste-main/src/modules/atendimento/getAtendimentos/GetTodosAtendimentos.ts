@@ -9,29 +9,29 @@ export class GetTodosAtendimentos {
             orderBy: {
                 clienteId: "asc"
             },
-            
+
             include: {
-               cliente: {
-                select:{
-                    nome: true,
-                    email: true,
-                    cep: true
-            },
-        },
-        produtos: {
-            select: {
-                produto: {
+                cliente: {
                     select: {
                         nome: true,
-                        marca: true,
-                        preco: true,
+                        email: true,
+                        cep: true
+                    },
+                },
+                produtos: {
+                    select: {
+                        produto: {
+                            select: {
+                                nome: true,
+                                marca: true,
+                                preco: true,
+                            }
+                        }
                     }
                 }
             }
-        }
-    }
 
-})
+        })
         if (atendimento.length == 0) {
             throw new AppError('Nenhum atendimento cadastrado', 404)
         }

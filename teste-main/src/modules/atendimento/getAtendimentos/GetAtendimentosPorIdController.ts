@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import { GetAtendimentosPorId } from "./GetAtendimentosPorId";
 
 
-export class GetAtendimentosPorIdController{
-    async handle(req: Request, res:Response){
+export class GetAtendimentosPorIdController {
+    async handle(req: Request, res: Response) {
         const getAtendimentosPorId = new GetAtendimentosPorId();
 
         const result = await getAtendimentosPorId.execute(req, res);
