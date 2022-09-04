@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { GetTodosClientes } from "./GetTodosClientes";
+import { GetTodosProdutos } from "./GetTodosProdutos";
 
 
-export class GetTodosClientesController {
+export class GetTodosProdutosController {
     async handle(req: Request, res: Response) {
-        const getTodosClientes = new GetTodosClientes();
+        const getTodosProdutos = new GetTodosProdutos();
 
-        const result = await getTodosClientes.execute();
+        const result = await getTodosProdutos.execute();
 
         return res.status(200).json(result);
     }

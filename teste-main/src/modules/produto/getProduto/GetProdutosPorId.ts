@@ -2,17 +2,17 @@ import { Request, Response } from "express";
 import { prisma } from "../../../prisma/client";
 import { AppError } from "../../errors/AppError";
 
-export class GetClientesPorId {
+export class GetProdutosPorId {
     async execute(req: Request, res: Response) {
-        const cliente = await prisma.cliente.findUnique({
+        const produto = await prisma.produto.findUnique({
             where: {
                 
                id: Number(req.body.id)
             },
         })
-        if (cliente == null) {
-            throw new AppError(`O cliente '${req.body.id}' não foi encontrado.`, 404)
+        if (produto == null) {
+            throw new AppError(`O produto '${req.body.id}' não foi encontrado.`, 404)
         }
-        return cliente;
+        return produto;
     }
 }

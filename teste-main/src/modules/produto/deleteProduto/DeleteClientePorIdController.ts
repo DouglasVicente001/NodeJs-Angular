@@ -1,12 +1,13 @@
-// import { Request, Response } from "express";
-// import { DeleteClientePorId } from "./DeleteClientePorId";
+import { Request, Response } from "express";
+import { DeleteProdutoPorId } from "./DeleteProdutoPorId";
 
-// export class DeleteClientePorIdController {
-//     async handle(req: Request, res: Response) {
-//         const deleteClientePorId = new DeleteClientePorId();
 
-//         const result = await deleteClientePorId.execute(req, res);
+export class DeleteProdutoPorIdController {
+    async handle(req: Request, res: Response) {
+        const deleteProdutoPorId = new DeleteProdutoPorId();
 
-//         return res.status(200).json(result)
-//     }
-// }
+        const result = await deleteProdutoPorId.execute(req, res);
+
+        return res.status(200).json(result)
+    }
+}
