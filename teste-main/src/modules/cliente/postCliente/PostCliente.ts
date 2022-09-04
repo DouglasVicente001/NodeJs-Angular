@@ -5,14 +5,14 @@ import { IPostClientesDTO } from "../../dtos/postClientesDTO";
 import { AppError } from "../../errors/AppError";
 
 export class PostCliente {
-    async execute ({nome, cep, email}: IPostClientesDTO): Promise<Cliente>{
-         
+    async execute({ nome, cep, email }: IPostClientesDTO): Promise<Cliente> {
+
         const usuarioExiste = await prisma.cliente.findUnique({
             where: {
                 email
             }
         });
-        if (usuarioExiste){
+        if (usuarioExiste) {
             throw new AppError(`O email: '${email}' já está sendo utilizado.`, 409)
         }
 
@@ -21,7 +21,7 @@ export class PostCliente {
                 email,
                 cep,
                 nome,
-                
+
             }
         })
         return cliente;

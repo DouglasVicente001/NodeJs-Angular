@@ -6,8 +6,8 @@ export class GetClientesPorId {
     async execute(req: Request, res: Response) {
         const cliente = await prisma.cliente.findUnique({
             where: {
-                
-               id: Number(req.body.id)
+
+                id: Number(req.body.id)
             },
         })
         if (cliente == null) {

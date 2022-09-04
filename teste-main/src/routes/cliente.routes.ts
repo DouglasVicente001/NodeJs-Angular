@@ -4,14 +4,15 @@ import { auth } from "../middlewares/auth";
 import { GetTodosClientesController } from "../modules/cliente/getCliente/GetTodosClientesController";
 import { GetClientesPorIdController } from '../modules/cliente/getCliente/GetClientePorIdController';
 import { DeleteClientePorIdController } from '../modules/cliente/deleteCliente/DeleteClientePorIdController';
-import { UpdateEtiquetaController } from '../modules/cliente/updateEtiqueta/UpdateEtiquetaController';
+import { UpdateClienteController } from '../modules/cliente/updateCliente/UpdateClienteController';
+
 
 
 const postEClienteController = new PostClienteController();
 const getTodosClientesController = new GetTodosClientesController();
 const getClientesPorNome = new GetClientesPorIdController();
 const deleteClientePorIdController = new DeleteClientePorIdController();
-const updateEtiquetaController = new UpdateEtiquetaController();
+const updateEtiquetaController = new UpdateClienteController();
 
 
 const clienteRoutes = Router();

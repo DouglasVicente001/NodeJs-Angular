@@ -6,8 +6,8 @@ export class GetProdutosPorId {
     async execute(req: Request, res: Response) {
         const produto = await prisma.produto.findUnique({
             where: {
-                
-               id: Number(req.body.id)
+
+                id: Number(req.body.id)
             },
         })
         if (produto == null) {

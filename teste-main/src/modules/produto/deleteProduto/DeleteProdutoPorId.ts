@@ -11,14 +11,14 @@ export class DeleteProdutoPorId {
             }
         })
         if (!produtoNaoExiste) {
-            throw new AppError(`A produto com ID '${req.query.id}' não existe.`, 404)
+            throw new AppError(`O produto com ID '${req.query.id}' não existe.`, 404)
         }
 
         const produto = await prisma.produto.delete({
             where: {
                 //@ts-ignore
                 id: Number(req.query.id)
-            },  
+            },
         });
         const result = (`Produto '${produto.nome}' com ID '${req.query.id}' foi excluida com sucesso`)
 
