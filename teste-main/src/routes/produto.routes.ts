@@ -19,6 +19,7 @@ const produtoRoutes = Router();
 
 produtoRoutes.get('/', getTodosProdutos.handle);
 produtoRoutes.get('/id', getProdutosPorIdController.handle);
+
 produtoRoutes.use(auth);
 
 produtoRoutes.patch('/', updateProdutoController.handle);
